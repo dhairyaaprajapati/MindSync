@@ -49,15 +49,12 @@
 
 ---
 
----
-
 ## 🚀 Getting Started
 
 ### 1. Clone the Repo
 
 ```bash
 
-```sh
 # Step 1: Clone the repository
 git clone https://github.com/dhairyaaprajapati/MindSync.git
 
