@@ -211,7 +211,7 @@ const Index = () => {
             </div>
           </div>
           <div className="border-t border-white/10 mt-8 pt-8 text-center text-slate-400">
-            <p>&copy; 2024 MindSync. Supporting mental health through technology.</p>
+            <p>&copy; 2025 MindSync by Dhairya Prajapati. Supporting mental health through technology.</p>
           </div>
         </div>
       </footer>
