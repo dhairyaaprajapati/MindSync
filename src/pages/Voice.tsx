@@ -1,4 +1,3 @@
-
 import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -262,7 +261,7 @@ const Voice = () => {
                       <div key={emotion}>
                         <div className="flex justify-between mb-2">
                           <span className="text-sm font-medium capitalize">{emotion.replace('_', ' ')}</span>
-                          <span className="text-sm text-gray-600">{value}%</span>
+                          <span className="text-sm text-gray-600">{value as number}%</span>
                         </div>
                         <Progress value={value as number} className="h-2" />
                       </div>
