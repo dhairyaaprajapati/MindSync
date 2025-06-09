@@ -26,7 +26,7 @@ npm i
 npm run dev
 ```
 
-## What technologies are used for this project?
+## 🛠️ project technologies?
 
 This project is built with:
 
