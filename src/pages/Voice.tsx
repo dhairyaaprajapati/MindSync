@@ -1,3 +1,4 @@
+
 import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -5,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Mic, MicOff, ArrowLeft, Brain, Play, Pause, RotateCcw, AlertTriangle, Sparkles } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { VoiceAnalysisResult } from "@/types/voice";
 
 const Voice = () => {
   const navigate = useNavigate();
@@ -12,7 +14,7 @@ const Voice = () => {
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [recordingTime, setRecordingTime] = useState(0);
   const [hasRecording, setHasRecording] = useState(false);
-  const [analysisResult, setAnalysisResult] = useState<any>(null);
+  const [analysisResult, setAnalysisResult] = useState<VoiceAnalysisResult | null>(null);
   const timerRef = useRef<NodeJS.Timeout>();
 
   const startRecording = async () => {
