@@ -51,7 +51,8 @@ const Voice = () => {
     
     // Simulate voice analysis
     setTimeout(() => {
-      const mockResult = {
+      const riskLevels: ('low' | 'moderate' | 'high')[] = ['low', 'moderate', 'high'];
+      const mockResult: VoiceAnalysisResult = {
         emotions: {
           stress: Math.floor(Math.random() * 40) + 30,
           anxiety: Math.floor(Math.random() * 35) + 25,
@@ -73,7 +74,7 @@ const Voice = () => {
           'Breathing pattern variations'
         ],
         recommendation: 'Consider stress management techniques',
-        riskLevel: 'moderate'
+        riskLevel: riskLevels[Math.floor(Math.random() * riskLevels.length)]
       };
       
       setAnalysisResult(mockResult);
