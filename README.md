@@ -37,10 +37,10 @@ Use [nvm](https://github.com/nvm-sh/nvm#installing-and-updating) to manage Node 
 
 ```sh
 # Step 1: Clone the repository
-git clone <YOUR_GIT_URL>
+git clone https://github.com/dhairyaaprajapati/MindSync.git
 
 # Step 2: Navigate to the project folder
-cd <YOUR_PROJECT_NAME>
+cd MindSync
 
 # Step 3: Install dependencies
 npm install
