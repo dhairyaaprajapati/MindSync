@@ -1,11 +1,10 @@
-
 import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { Send, Brain, ArrowLeft, AlertTriangle, TrendingUp, Heart } from "lucide-react";
+import { Send, Brain, ArrowLeft, AlertTriangle, TrendingUp, Heart, Sparkles } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 interface Message {
@@ -148,10 +147,10 @@ const Chat = () => {
 
   const getOverallStatusColor = (status: string) => {
     switch (status) {
-      case 'attention_needed': return 'bg-red-500';
-      case 'monitoring': return 'bg-yellow-500';
-      case 'stable': return 'bg-green-500';
-      default: return 'bg-gray-500';
+      case 'attention_needed': return 'bg-red-500/80';
+      case 'monitoring': return 'bg-yellow-500/80';
+      case 'stable': return 'bg-green-500/80';
+      default: return 'bg-gray-500/80';
     }
   };
 
@@ -165,9 +164,9 @@ const Chat = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       {/* Header */}
-      <div className="bg-white/80 backdrop-blur-sm border-b border-blue-100 sticky top-0 z-50">
+      <div className="glass-effect border-b border-white/10 sticky top-0 z-50">
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
@@ -175,17 +174,19 @@ const Chat = () => {
                 variant="ghost" 
                 size="sm"
                 onClick={() => navigate('/')}
-                className="text-gray-600 hover:text-blue-600"
+                className="text-slate-300 hover:text-white hover:bg-white/10"
               >
                 <ArrowLeft className="h-4 w-4 mr-2" />
                 Back
               </Button>
-              <div className="flex items-center space-x-2">
-                <Brain className="h-6 w-6 text-blue-600" />
-                <span className="text-xl font-bold text-gray-900">Chat Analysis</span>
+              <div className="flex items-center space-x-3">
+                <div className="p-2 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl">
+                  <Brain className="h-5 w-5 text-white" />
+                </div>
+                <span className="text-xl font-bold text-white">Chat Analysis</span>
               </div>
             </div>
-            <Badge className={`${getOverallStatusColor(emotionSummary.overall)} text-white`}>
+            <Badge className={`${getOverallStatusColor(emotionSummary.overall)} text-white border-0`}>
               {getOverallStatusText(emotionSummary.overall)}
             </Badge>
           </div>
@@ -196,45 +197,45 @@ const Chat = () => {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
           {/* Emotion Dashboard */}
           <div className="lg:col-span-1">
-            <Card className="sticky top-24">
+            <Card className="glass-effect border-white/10 sticky top-24">
               <CardHeader>
-                <CardTitle className="flex items-center space-x-2">
-                  <TrendingUp className="h-5 w-5 text-blue-600" />
+                <CardTitle className="flex items-center space-x-2 text-white">
+                  <TrendingUp className="h-5 w-5 text-green-400" />
                   <span>Emotion Tracking</span>
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div>
                   <div className="flex justify-between mb-2">
-                    <span className="text-sm font-medium">Stress Level</span>
-                    <span className="text-sm text-gray-600">{emotionSummary.stress}%</span>
+                    <span className="text-sm font-medium text-slate-300">Stress Level</span>
+                    <span className="text-sm text-slate-400">{emotionSummary.stress}%</span>
                   </div>
-                  <Progress value={emotionSummary.stress} className="h-2" />
+                  <Progress value={emotionSummary.stress} className="h-2 bg-slate-700" />
                 </div>
                 
                 <div>
                   <div className="flex justify-between mb-2">
-                    <span className="text-sm font-medium">Anxiety Level</span>
-                    <span className="text-sm text-gray-600">{emotionSummary.anxiety}%</span>
+                    <span className="text-sm font-medium text-slate-300">Anxiety Level</span>
+                    <span className="text-sm text-slate-400">{emotionSummary.anxiety}%</span>
                   </div>
-                  <Progress value={emotionSummary.anxiety} className="h-2" />
+                  <Progress value={emotionSummary.anxiety} className="h-2 bg-slate-700" />
                 </div>
                 
                 <div>
                   <div className="flex justify-between mb-2">
-                    <span className="text-sm font-medium">Mood Stability</span>
-                    <span className="text-sm text-gray-600">{emotionSummary.mood}%</span>
+                    <span className="text-sm font-medium text-slate-300">Mood Stability</span>
+                    <span className="text-sm text-slate-400">{emotionSummary.mood}%</span>
                   </div>
-                  <Progress value={emotionSummary.mood} className="h-2" />
+                  <Progress value={emotionSummary.mood} className="h-2 bg-slate-700" />
                 </div>
 
                 {emotionSummary.overall === 'attention_needed' && (
-                  <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+                  <div className="bg-red-500/20 border border-red-500/30 rounded-lg p-4 backdrop-blur-sm">
                     <div className="flex items-center space-x-2 mb-2">
-                      <AlertTriangle className="h-4 w-4 text-red-600" />
-                      <span className="text-sm font-medium text-red-800">Support Recommended</span>
+                      <AlertTriangle className="h-4 w-4 text-red-400" />
+                      <span className="text-sm font-medium text-red-300">Support Recommended</span>
                     </div>
-                    <p className="text-xs text-red-700">
+                    <p className="text-xs text-red-200">
                       Consider speaking with a mental health professional.
                     </p>
                   </div>
@@ -245,10 +246,10 @@ const Chat = () => {
 
           {/* Chat Interface */}
           <div className="lg:col-span-3">
-            <Card className="h-[600px] flex flex-col">
+            <Card className="glass-effect border-white/10 h-[600px] flex flex-col">
               <CardHeader>
-                <CardTitle className="flex items-center space-x-2">
-                  <Heart className="h-5 w-5 text-red-500" />
+                <CardTitle className="flex items-center space-x-2 text-white">
+                  <Heart className="h-5 w-5 text-pink-400" />
                   <span>Mental Health Chat Assistant</span>
                 </CardTitle>
               </CardHeader>
@@ -262,23 +263,23 @@ const Chat = () => {
                       className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
                     >
                       <div
-                        className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${
+                        className={`max-w-xs lg:max-w-md px-4 py-3 rounded-2xl ${
                           message.sender === 'user'
-                            ? 'bg-blue-600 text-white'
-                            : 'bg-gray-100 text-gray-900'
+                            ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white'
+                            : 'glass-effect border-white/10 text-slate-200'
                         }`}
                       >
                         <p className="text-sm">{message.text}</p>
                         {message.emotion && (
-                          <div className="mt-2 pt-2 border-t border-gray-200">
+                          <div className="mt-3 pt-3 border-t border-white/20">
                             <div className="flex items-center justify-between text-xs">
-                              <span className="font-medium">
+                              <span className="font-medium text-white">
                                 {message.emotion.primary} ({message.emotion.confidence}%)
                               </span>
                             </div>
-                            <div className="mt-1">
+                            <div className="mt-2 flex flex-wrap gap-1">
                               {message.emotion.indicators.map((indicator, idx) => (
-                                <Badge key={idx} variant="secondary" className="text-xs mr-1">
+                                <Badge key={idx} variant="secondary" className="text-xs bg-white/20 text-slate-200 border-0">
                                   {indicator}
                                 </Badge>
                               ))}
@@ -291,9 +292,9 @@ const Chat = () => {
                   
                   {isAnalyzing && (
                     <div className="flex justify-start">
-                      <div className="bg-gray-100 text-gray-900 px-4 py-2 rounded-lg">
+                      <div className="glass-effect border-white/10 text-slate-200 px-4 py-3 rounded-2xl">
                         <div className="flex items-center space-x-2">
-                          <div className="animate-spin h-4 w-4 border-2 border-blue-600 border-t-transparent rounded-full"></div>
+                          <Sparkles className="animate-pulse h-4 w-4 text-green-400" />
                           <span className="text-sm">Analyzing emotion...</span>
                         </div>
                       </div>
@@ -304,19 +305,19 @@ const Chat = () => {
                 </div>
 
                 {/* Input */}
-                <div className="flex space-x-2">
+                <div className="flex space-x-3">
                   <Input
                     value={inputText}
                     onChange={(e) => setInputText(e.target.value)}
                     placeholder="Share what's on your mind..."
                     onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-                    className="flex-1"
+                    className="flex-1 bg-white/10 border-white/20 text-white placeholder:text-slate-400 focus:border-green-400"
                     disabled={isAnalyzing}
                   />
                   <Button 
                     onClick={handleSendMessage}
                     disabled={isAnalyzing || !inputText.trim()}
-                    className="bg-blue-600 hover:bg-blue-700"
+                    className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white border-0"
                   >
                     <Send className="h-4 w-4" />
                   </Button>
