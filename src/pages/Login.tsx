@@ -6,14 +6,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Brain } from "lucide-react";
+import { Brain, ArrowLeft } from "lucide-react";
 import { toast } from "sonner";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const { login } = useAuth();
+  const { login, user } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -24,7 +24,7 @@ const Login = () => {
     
     if (success) {
       toast.success("Login successful!");
-      navigate("/");
+      navigate("/dashboard");
     } else {
       toast.error("Invalid email or password");
     }
@@ -34,6 +34,18 @@ const Login = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center p-4">
+      {/* Back Navigation */}
+      <div className="absolute top-4 left-4">
+        <Button 
+          variant="ghost" 
+          onClick={() => navigate(user ? "/dashboard" : "/")}
+          className="text-white hover:bg-white/10"
+        >
+          <ArrowLeft className="mr-2 h-4 w-4" />
+          Back to {user ? "Dashboard" : "Home"}
+        </Button>
+      </div>
+
       <Card className="w-full max-w-md glass-effect border-white/10">
         <CardHeader className="text-center">
           <div className="flex items-center justify-center space-x-3 mb-4">
