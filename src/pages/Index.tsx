@@ -64,7 +64,14 @@ const Index = () => {
                 Contact
               </Button>
               <Button 
-                onClick={() => navigate('/chat')}
+                onClick={() => navigate('/login')}
+                variant="ghost" 
+                className="text-slate-300 hover:text-white hover:bg-white/10"
+              >
+                Login
+              </Button>
+              <Button 
+                onClick={() => navigate('/get-started')}
                 className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white border-0 glow-effect"
               >
                 <Sparkles className="mr-2 h-4 w-4" />
@@ -98,11 +105,11 @@ const Index = () => {
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Button 
               size="lg" 
-              onClick={() => navigate('/chat')}
+              onClick={() => navigate('/get-started')}
               className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white text-lg px-8 py-4 h-auto glow-effect"
             >
               <MessageCircle className="mr-2 h-5 w-5" />
-              Start Chat Analysis
+              Get Started Now
             </Button>
             <Button 
               size="lg" 
@@ -179,7 +186,7 @@ const Index = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
               size="lg" 
-              onClick={() => navigate('/chat')}
+              onClick={() => navigate('/get-started')}
               className="bg-white text-green-600 hover:bg-gray-100 text-lg px-8 py-4 h-auto font-semibold"
             >
               Start Your Assessment
