@@ -13,7 +13,7 @@
 
 ## 🌐 Overview
 
-**MindSync** is an AI-powered mental wellness web app that detects early signs of stress, anxiety, or burnout through both chat and voice input. By leveraging natural language processing and emotional analysis, it offers personalized support suggestions and therapist recommendations.
+**MindSync** is an AI-powered mental wellness web app that detects early signs of stress, anxiety, or burnout through both chat and voice input. By leveraging natural language processing and emotional analysis, it offers personalized support suggestions.
 
 ---
 
